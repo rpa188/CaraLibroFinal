@@ -303,6 +303,9 @@
                                                     <color key="baseForegroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="adjuntarImagen:" destination="m5C-xO-2JP" eventType="touchUpInside" id="8WE-FB-IUw"/>
+                                                </connections>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="100" verticalCompressionResistancePriority="100" image="perfil-default" translatesAutoresizingMaskIntoConstraints="NO" id="dm4-jM-oiu">
                                                 <rect key="frame" x="129.5" y="0.0" width="204.5" height="128"/>
@@ -374,6 +377,7 @@
                         <outlet property="anchorCenterContentY" destination="gHY-Ap-G4f" id="McS-72-FAZ"/>
                         <outlet property="apellidoTextField" destination="vlh-iR-6nN" id="7By-Y8-v0g"/>
                         <outlet property="emailTextField" destination="HB7-Ql-OdD" id="M7Q-sV-U7A"/>
+                        <outlet property="imageView" destination="dm4-jM-oiu" id="rzg-kP-XxT"/>
                         <outlet property="nameTextField" destination="5KP-Q7-cqv" id="MTs-VJ-9yc"/>
                         <outlet property="passwordTextField" destination="kAg-Gg-Mdw" id="eyz-2H-tc7"/>
                         <outlet property="registroBtn" destination="4Y8-FS-5BK" id="PZQ-O1-zM9"/>

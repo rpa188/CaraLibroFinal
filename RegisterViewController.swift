@@ -20,6 +20,7 @@ class RegisterViewController: UIViewController {
     
     @IBOutlet weak var registroBtn: UIButton!
     
+    @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet private weak var viewContent: UIView!
     @IBOutlet private weak var anchorCenterContentY: NSLayoutConstraint!
@@ -45,7 +46,15 @@ class RegisterViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-    
+
+    @IBAction func adjuntarImagen(_ sender: Any) {
+        let vc = UIImagePickerController()
+        vc.sourceType = .photoLibrary
+        vc.delegate = self
+        vc.allowsEditing = true
+        present(vc, animated: true)
+        
+    }
     
     @IBAction func registroBtnAction(_ sender: Any) {
         
@@ -125,3 +134,16 @@ extension RegisterViewController {
     }
 }
 
+extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage {
+            imageView.image = image
+        }
+        picker.dismiss(animated: true)
+    }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true)
+    }
+    
+}
