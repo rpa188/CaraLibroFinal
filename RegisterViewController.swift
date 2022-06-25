@@ -7,8 +7,11 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class RegisterViewController: UIViewController {
+    
+    private let database = Database.database().reference()
     
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
@@ -46,13 +49,21 @@ class RegisterViewController: UIViewController {
     
     @IBAction func registroBtnAction(_ sender: Any) {
         
-        
+        let name = nameTextField.text
+        let apellido = apellidoTextField.text
         
         if let email = emailTextField.text,
            let password = passwordTextField.text {
             Auth.auth().createUser(withEmail: email, password: password) {
                 result, error in
                 if let result = result, error == nil {
+                    let object:  [String: Any] = [
+                        "email": email,
+                        "password": password,
+                        "name" : name,
+                        "apellido" : apellido
+                    ]
+                    self.database.child("user").setValue(object)
                     self.performSegue(withIdentifier: "registerHome", sender: nil)
                     /*
                     self.navigationController?.pushViewController(HomeWViewController(email: result.user.email!, provider: .basic), animated: true)
