@@ -21,6 +21,10 @@
 		EE52363E285FE1B40032C42E /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = EE52363D285FE1B40032C42E /* FirebaseStorage */; };
 		EE523640285FFC1C0032C42E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE52363F285FFC1C0032C42E /* LoginViewController.swift */; };
 		EEA8252E2866AD9700E9F644 /* HomeWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA8252D2866AD9700E9F644 /* HomeWViewController.swift */; };
+		EEC796132883609D00574FAB /* ChatModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC796122883609D00574FAB /* ChatModels.swift */; };
+		EEC79615288360C200574FAB /* ConversationsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC79614288360C200574FAB /* ConversationsModels.swift */; };
+		EEC79617288360D400574FAB /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC79616288360D400574FAB /* ProfileViewModel.swift */; };
+		EEC79619288360E900574FAB /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC79618288360E900574FAB /* SearchResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +40,10 @@
 		EE523634285FDEB90032C42E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EE52363F285FFC1C0032C42E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		EEA8252D2866AD9700E9F644 /* HomeWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWViewController.swift; sourceTree = "<group>"; };
+		EEC796122883609D00574FAB /* ChatModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModels.swift; sourceTree = "<group>"; };
+		EEC79614288360C200574FAB /* ConversationsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsModels.swift; sourceTree = "<group>"; };
+		EEC79616288360D400574FAB /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		EEC79618288360E900574FAB /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +64,6 @@
 		EE523614285FDB5F0032C42E = {
 			isa = PBXGroup;
 			children = (
-				EE10412F2864210B005098B6 /* RegisterViewController.swift */,
 				EE52361F285FDB5F0032C42E /* CaraLibro */,
 				EE52361E285FDB5F0032C42E /* Products */,
 			);
@@ -73,18 +80,71 @@
 		EE52361F285FDB5F0032C42E /* CaraLibro */ = {
 			isa = PBXGroup;
 			children = (
-				EE523620285FDB5F0032C42E /* AppDelegate.swift */,
-				EE523622285FDB5F0032C42E /* SceneDelegate.swift */,
-				EE523626285FDB5F0032C42E /* Main.storyboard */,
-				EE523629285FDB640032C42E /* Assets.xcassets */,
+				EEC796102883601200574FAB /* Controllers */,
+				EEC7960F28835FFE00574FAB /* Resources */,
+				EEC7960E28835FE800574FAB /* Views */,
+				EEC7960D28835FD700574FAB /* Models */,
 				EE523634285FDEB90032C42E /* GoogleService-Info.plist */,
-				EE52362B285FDB640032C42E /* LaunchScreen.storyboard */,
 				EE52362E285FDB640032C42E /* Info.plist */,
-				EE52363F285FFC1C0032C42E /* LoginViewController.swift */,
-				EE1041312864334E005098B6 /* RecuperarViewController.swift */,
-				EEA8252D2866AD9700E9F644 /* HomeWViewController.swift */,
 			);
 			path = CaraLibro;
+			sourceTree = "<group>";
+		};
+		EEC7960D28835FD700574FAB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EEC796122883609D00574FAB /* ChatModels.swift */,
+				EEC79614288360C200574FAB /* ConversationsModels.swift */,
+				EEC79616288360D400574FAB /* ProfileViewModel.swift */,
+				EEC79618288360E900574FAB /* SearchResult.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		EEC7960E28835FE800574FAB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EE523629285FDB640032C42E /* Assets.xcassets */,
+				EEC7961A288365B600574FAB /* Storyboards */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EEC7960F28835FFE00574FAB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EE523620285FDB5F0032C42E /* AppDelegate.swift */,
+				EE523622285FDB5F0032C42E /* SceneDelegate.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		EEC796102883601200574FAB /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				EEA8252D2866AD9700E9F644 /* HomeWViewController.swift */,
+				EEC7961B2883661500574FAB /* Login */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		EEC7961A288365B600574FAB /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				EE52362B285FDB640032C42E /* LaunchScreen.storyboard */,
+				EE523626285FDB5F0032C42E /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		EEC7961B2883661500574FAB /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				EE52363F285FFC1C0032C42E /* LoginViewController.swift */,
+				EE10412F2864210B005098B6 /* RegisterViewController.swift */,
+				EE1041312864334E005098B6 /* RecuperarViewController.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,9 +230,13 @@
 			files = (
 				EE1041322864334E005098B6 /* RecuperarViewController.swift in Sources */,
 				EEA8252E2866AD9700E9F644 /* HomeWViewController.swift in Sources */,
+				EEC79619288360E900574FAB /* SearchResult.swift in Sources */,
 				EE1041302864210B005098B6 /* RegisterViewController.swift in Sources */,
+				EEC79617288360D400574FAB /* ProfileViewModel.swift in Sources */,
+				EEC796132883609D00574FAB /* ChatModels.swift in Sources */,
 				EE523640285FFC1C0032C42E /* LoginViewController.swift in Sources */,
 				EE523621285FDB5F0032C42E /* AppDelegate.swift in Sources */,
+				EEC79615288360C200574FAB /* ConversationsModels.swift in Sources */,
 				EE523623285FDB5F0032C42E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
