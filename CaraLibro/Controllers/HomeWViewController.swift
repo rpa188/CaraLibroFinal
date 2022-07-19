@@ -15,6 +15,6 @@ class HomeWViewController:UIViewController {
         super.viewDidLoad()
         title = "Home"
 
-        // Do any additional setup after loading the view.
+        // Realice cualquier configuración adicional después de cargar la vista.
     }
 }

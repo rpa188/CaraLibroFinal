@@ -44,7 +44,7 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
         
 
-        // Do any additional setup after loading the view.
+        // Realice cualquier configuración adicional después de cargar la vista
     }
 
     @IBAction func adjuntarImagen(_ sender: Any) {
@@ -58,9 +58,83 @@ class RegisterViewController: UIViewController {
     
     @IBAction func registroBtnAction(_ sender: Any) {
         
+        
+        guard let name = nameTextField.text,
+            let apellido = apellidoTextField.text,
+            let email = emailTextField.text,
+            let password = passwordTextField.text,
+            !name.isEmpty,
+            !apellido.isEmpty,
+            !email.isEmpty,
+              password.count >= 6 else {
+                alertUserLoginError()
+                return
+        }
+
+       
+        // Firebase Log In
+    DatabaseManager.shared.userExists(with: email, completion: { [weak self] exists in
+        guard let strongSelf = self else {
+            return
+        }
+
+
+        guard !exists else {
+            // El usuario ya existe
+            strongSelf.alertUserLoginError(message: "Parece que ya existe una cuenta de usuario para esa dirección de correo electrónico.")
+            return
+        }
+
+        FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: { authResult, error in
+            guard authResult != nil, error == nil else {
+                print("Error al crear el usuario")
+                return
+            }
+
+            UserDefaults.standard.setValue(email, forKey: "email")
+            UserDefaults.standard.setValue("\(name) \(apellido)", forKey: "name")
+
+
+            let chatUser = ChatAppUser(name: name,
+                                      apellido: apellido,
+                                      email: email)
+            DatabaseManager.shared.insertUser(with: chatUser, completion: { success in
+                if success {
+                    // Cargar imagen
+                    guard let image = strongSelf.imageView.image,
+                        let data = image.pngData() else {
+                            return
+                    }
+                    let filename = chatUser.profilePictureFileName
+                    StorageManager.shared.uploadProfilePicture(with: data, fileName: filename, completion: { result in
+                        switch result {
+                        case .success(let downloadUrl):
+                            UserDefaults.standard.set(downloadUrl, forKey: "profile_picture_url")
+                            print(downloadUrl)
+                        case .failure(let error):
+                            print("Storage maanger error: \(error)")
+                        }
+                    })
+                    self?.performSegue(withIdentifier: "registerHome", sender: nil)
+                }
+            })
+            
+
+            strongSelf.navigationController?.dismiss(animated: true, completion: nil)
+        })
+    })
+        
+        
+        
+        
+        
+        
+        
+        
+        /*
+        
         let name = nameTextField.text
         let apellido = apellidoTextField.text
-        
         if let email = emailTextField.text,
            let password = passwordTextField.text {
             Auth.auth().createUser(withEmail: email, password: password) {
@@ -86,9 +160,43 @@ class RegisterViewController: UIViewController {
             }
         }
         
+         */
         
         
     }
+    
+    func alertUserLoginError(message: String = "Por favor ingrese toda la información para crear una nueva cuenta.") {
+        let alert = UIAlertController(title: "Ups",
+                                      message: message,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title:"Dismiss",
+                                      style: .cancel, handler: nil))
+        present(alert, animated: true)
+    }
+    
+    //Probar opcion 2 Firebase Log In
+    @objc private func registerButtonTapped() {
+}
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
 //MARK: - Keyboard events
 extension RegisterViewController {

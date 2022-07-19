@@ -35,7 +35,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Realice cualquier configuración adicional después de cargar la vista.
     }
     @IBAction func loginBtnAction(_ sender: Any) {
         
