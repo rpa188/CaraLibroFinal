@@ -102,7 +102,7 @@ extension ContactosViewController: UITableViewDataSource {
         guard let contacto = contactoSnapshot.value as? [String:String] else { return cell }
         print("el contacto es : \(contacto)")
         
-        cell.textLabel?.text = objContact.title
+        //cell.textLabel?.text = objContact.title
         //let name = contacto[Constants.MessageFields.name] ?? ""
         
         return cell
