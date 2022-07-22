@@ -138,7 +138,7 @@ extension DatabaseManager {
         public var localizedDescription: String {
             switch self {
             case .failedToFetch:
-                return "This means blah failed"
+                return "Esto significa que fallo"
             }
         }
     }
